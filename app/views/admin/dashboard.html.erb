@@ -22,7 +22,7 @@
 <h2><strong>Duration by project </strong></h2>
 <section>
   <% @events_project.each do |e| %>
-      <li><%= e.project.name %></li><br>
+      <li><%= e.project ? e.project.name : "No project"  %></li><br>
       Hours <%= e.duration %><hr>
   <% end %>
 </section>
