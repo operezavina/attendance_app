@@ -1,0 +1,17 @@
+<%= form_for(@response) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.label :post_id %><br>
+      <%= f.text_field :post_id, :value=>@post.id %>
+      <input type="hidden" name="post_id" value="<%=@post.id %>" />
+    </div>
+    <div class="field">
+      <%= f.label :email_visitor %><br>
+      <%= f.text_field :email_visitor %>
+    </div>
+    <div class="field">
+      <%= f.label :content_visitor %><br>
+      <%= f.text_area :content_visitor, placeholder: "Compose new response..." %>
+    </div>
+    <%= f.submit "Response", class: "btn btn-large btn-primary" %>
+<% end %>

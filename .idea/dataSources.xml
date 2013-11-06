@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2476830610">
+    <data-source source="LOCAL" name="Rails attendance_app: test" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="5929940c-d965-4afb-8804-8a53035b8541">
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:attendance_test</jdbc-url>
+      <user-name>vagrant</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails attendance_app: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="5385f5aa-8d0a-414f-af7b-0854b9e01a36">
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:attendance_production</jdbc-url>
+      <user-name>vagrant</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails attendance_app: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="e356e14c-755c-4fe1-a753-06df28a789ec">
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:attendance_development</jdbc-url>
+      <user-name>vagrant</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails attendance_app: cucumber" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="67abff16-e865-4a03-b314-bfb0cb5aa71b">
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:attendance_test</jdbc-url>
+      <user-name>vagrant</user-name>
+      <user-password>dfdadfd8dfcbdfdcdfc5</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
