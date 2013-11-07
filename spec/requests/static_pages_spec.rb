@@ -7,16 +7,21 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path }
 
-    it { should have_content('CraigList') }
+    it { should have_content('Attendance System') }
     it { should_not have_title('| Home') }
 
     describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        FactoryGirl.create(:post, user: user, content: "Lorem ipsum")
-        FactoryGirl.create(:post, user: user, content: "Dolor sit amet")
-        sign_in user
         visit root_path
+      end
+
+      describe "When I visit menu on homepage" do
+        it "should have a the next items" do
+          visit root_path
+          find_link("Home")
+
+        end
       end
 
     end
