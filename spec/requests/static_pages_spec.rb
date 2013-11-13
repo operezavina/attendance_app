@@ -20,7 +20,7 @@ describe "Static pages" do
         it "should have a the next items" do
           visit root_path
           find_link("Home")
-
+          find_link("Sign in")
         end
       end
 

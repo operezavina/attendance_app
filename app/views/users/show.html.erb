@@ -1,4 +1,9 @@
 <% provide(:title, @user.name) %>
+<script>
+    $(function() {
+        $( "#selectable" ).selectable();
+    });
+</script>
 <div class="row">
   <aside class="users">
     <section>
@@ -10,7 +15,7 @@
     </section>
     <section>
     <%= calendar @events,  {:prev_text=>"prev", :next_text=>"next"} do |event| %>
-        <div><%= link_to event.name, events_path %></div>
+        <div id="selectable"><%=  link_to event.name, events_path, class:'ui-widget-content' %></div>
     <% end %>
     </section>
     <section>

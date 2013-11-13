@@ -20,6 +20,7 @@ class EventsController < ActionController::Base
     end
   end
   def new
+    @event = Event.new
   end
   def edit
     @event = Event.find params[:id]

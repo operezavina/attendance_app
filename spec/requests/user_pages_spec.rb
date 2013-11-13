@@ -38,7 +38,11 @@ describe "User pages" do
         let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_link('Sign out') }
-
+        it { should have_link('End day') }
+        it { should have_link('Home') }
+        it { should have_css('.calendar') }
+        it { should have_link('Account') }
+        it { should have_link('Profile') }
 
       end
     end

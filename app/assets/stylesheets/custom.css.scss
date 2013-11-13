@@ -1,7 +1,11 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
+#feedback { font-size: 1.4em; }
+#selectable .ui-selecting { background: #FECA40; }
+#selectable .ui-selected { background: #F39814; color: white; }
+#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -14,6 +18,11 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  background: -webkit-linear-gradient(white, blue); /* For Safari */
+  background: -o-linear-gradient(white, blue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(white, blue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(white, blue); /* Standard syntax (must be last) */
+
 }
 
 body {
@@ -26,6 +35,7 @@ section {
 
 textarea {
   resize: vertical;
+  background-color: gray;
 }
 
 .center {
@@ -117,6 +127,7 @@ div.desc
 /* footer */
 
 footer {
+
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
@@ -215,11 +226,13 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 90%;
   margin-bottom: 15px;
+  background-color: gray;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
+  background-color: gray;
 }
 #error_explanation {
   color: #f00;
@@ -273,5 +286,6 @@ aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
+    background-color: gray;
   }
 }
