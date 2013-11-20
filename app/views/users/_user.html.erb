@@ -1,8 +1,10 @@
-<li>
-  <%= link_to user.name, user %>
-  <%= link_to "Edit", edit_user_path(user) %>
+
+  <tr>
+  <td><%= link_to user.name, user %></td>
+  <td><%= user.email %> </td>
+  <td><%= link_to "Edit", edit_user_path(user) %></td>
   <% if current_user.admin? && !current_user?(user) %>
-      | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
+       <td><%= link_to "delete", user, method: :delete,
+                    data: { confirm: "You sure?" } %></td>
   <% end %>
-</li>
+  </tr>

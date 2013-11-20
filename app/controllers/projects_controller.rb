@@ -2,7 +2,7 @@ class ProjectsController < ActionController::Base
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :admin_user,     only: [:destroy,:index]
   def index
-    @projects = Project.all
+    @projects = Project.paginate(page:params[:page])
   end
   def new
    @project = Project.new

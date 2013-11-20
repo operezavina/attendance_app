@@ -8,6 +8,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+    factory :project do
+      name "new project"
+
+    end
   end
 
 end
