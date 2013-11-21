@@ -1,7 +1,25 @@
-<h3></h3>
+<h3>Register attendance</h3>
 
-
-<%= calendar @events,  {:prev_text=>"prev   ", :next_text=>"   next"} do |event| %>
-
+<form role="form" action="/home">
+  <div class="form-group">
+    <label for="text1">Name o Telephone</label>
+    <input type="text" name="texto" class="form-control" id="texto" placeholder="Enter Name or Last Name or Phone" data-toggle="tooltip" title="information about you"><br>
+    <label for="printlabel">Print Label</label>
+    <%= check_box_tag(:print) %><br>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<table class="table">
+<th>Name</th>
+<th>Action</th>
+<tr>
+<% @users.each do |user| %>
+<td><%= user.name %></td>
+<td><button type="button" class="btn btn-success">I´m here</button></td>
+<% end %>
+ </tr>
+</table>
+<% calendar @events,  {:prev_text=>"prev   ", :next_text=>"   next"} do |event| %>
 <% end %>
 

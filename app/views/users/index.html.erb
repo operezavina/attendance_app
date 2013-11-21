@@ -2,7 +2,7 @@
 <h1>All users</h1>
 
 
-<%= will_paginate %>
+<%= will_paginate @users %>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -14,13 +14,13 @@
   </thead>
 
   <tbody>
-<ul class="users">
+<ul class="pagination">
   <% @users.each do |user| %>
       <%= render user %>
   <% end %>
 </ul>
   </tbody>
 </table>
-<%= will_paginate %>
+<%= will_paginate @users %>
 
 <p>New employee? <%= link_to "Sign up now!", signup_path %></p>
