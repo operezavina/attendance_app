@@ -1,23 +1,17 @@
 <h3>Register attendance</h3>
 <script>
-  var data = "Heello";
-  function printDiv(printarea) {
-      var printContents = document.getElementById(printarea).innerHTML;
-      var originalContents = document.body.innerHTML;
-
-      document.body.innerHTML = printContents;
-
-      window.print();
-
-      document.body.innerHTML = originalContents;
-  }
     function Label(printarea)
     {
 
-        var mywindow = window.open('', 'Label', 'height=400,width=400');
+        var mywindow = window.open('', 'Label', 'height=100,width=400');
         mywindow.document.write('<html><head><title></title>');
-
-        mywindow.document.write('</head><body id="printable" >');
+        mywindow.document.write('<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />')
+        mywindow.document.write('<style>' +
+                ' '+
+                '@media print '+
+                '{#non-printable { display: none; }'+
+                '}</style>' );
+        mywindow.document.write('</head><body>');
         mywindow.document.write(document.getElementById(printarea).innerHTML);
         mywindow.document.write('</body><button id="non-printable" type="button" onclick="window.print()" class="btn btn-success">Print</button></html>');
 
@@ -26,39 +20,34 @@
 
         return true;
     }
-  function validaprint()
-  {
-  var x=document.getElementById("print").value;
-  if(x==true)
-  {
-  return "Imprime Etiqueta";
-  }
-  }
+
 </script>
 <form role="form" action="/home">
   <div class="form-group">
     <label for="text1">Name o Email</label>
     <input type="text" name="texto" class="form-control" id="texto" placeholder="Enter Name or Email" data-toggle="tooltip" title="information about you"><br>
-    <label for="printlabel">Print Label</label>
-    <%= check_box_tag(:print) %><br>
   </div>
   <br>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+<%= will_paginate @users %>
 <table class="table">
 <th>Name</th>
 <th>Action</th>
-<tr>
+<th>Label</th>
 <% @users.each do |user| %>
-<td id="printableArea">
-  <div id="printable"></div><strong>Hispanic Chamber of Commerce</strong><br>
+<tr>
+<td id="printableArea<%=user.id %>">
   Name: <%= user.name %><br>
   Email: <%= user.email %><br></div>
+  <div id="printable"></div><strong>Hispanic Chamber of Commerce of Wisconsin </strong><br>
 </td>
-<td><button type="button"  onclick="Label('printableArea')" class="btn btn-success">I´m here</button></td>
+<td><%= link_to "Present", events_path(user.id), :method => :post, :class=>'btn btn-success' %></td>
+      <td><button type="button"  onclick="Label('printableArea<%=user.id %>')" class="btn btn-primary">Print</button></td>
+</tr>
 <% end %>
- </tr>
 </table>
+<%= will_paginate @users %>
 <% calendar @events,  {:prev_text=>"prev   ", :next_text=>"   next"} do |event| %>
 <% end %>
 

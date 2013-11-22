@@ -6,6 +6,8 @@
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
+        Last updated: <%= distance_of_time_in_words(Time.now, @user.updated_at)+ ' ago' %>
+
         <%= f.label :name %>
         <%= f.text_field :name %>
 
@@ -18,8 +20,8 @@
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation %>
 
-         <%= f.label :admin %><br>
-         <%= f.check_box :admin %>
+         <%= f.label :admin %>
+         <%= f.check_box :admin %><br><hr>
 
 
         <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>

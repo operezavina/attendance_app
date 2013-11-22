@@ -26,7 +26,27 @@ class EventsController < ActionController::Base
     @event = Event.find params[:id]
   end
   def create
-
+    user = User.find params[:format]
+    if user
+      x = DateTime.now
+      @event = Event.order("created_at ASC").where(user_id:user.id).last
+      if @event != nil
+        if @event.start_time.strftime("%F") != DateTime.now.strftime("%F")
+          @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),end_time:DateTime.new(x.year, x.month, x.day, x.hour+2, x.min,x.sec),name:"Reunion mensual")
+          @event.save
+          flash.now[:success] = 'Sign in success!'
+        end
+        redirect_to root_url
+      else
+        @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),name:user.email)
+        @event.save
+        flash.now[:success] = 'Sign in success!'
+        redirect_to root_url
+      end
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
+    end
   end
   def update
     respond_to do |format|

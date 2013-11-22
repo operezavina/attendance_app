@@ -4,7 +4,23 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    if !params[:user].nil?
+      @users = User.where(user_id:params[:user][:user_id],:per_page => 5)
+      respond_to do |format|
+        format.html
+        format.csv { render text: @users.to_csv }
+        format.xls
+      end
+    else
+      @users = User.order(:name).paginate(page: params[:page],:per_page => 5)
+      respond_to do |format|
+        format.html
+        format.csv { render text: @users.to_csv }
+        format.xls
+
+      end
+    end
+
   end
 
   def show
@@ -29,8 +45,10 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
   end
   def update
+      @user = User.find params[:id]
     respond_to do |format|
       if @user.update(user_params)
+        @user.save
         format.html { redirect_to @user, notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else

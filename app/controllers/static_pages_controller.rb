@@ -4,9 +4,13 @@ class StaticPagesController < ApplicationController
       @events = Event.all
       @events_time = Event.select("id,start_time,end_time,user_id").order("user_id")
    #end
-      #@users = User.where(name:params[:texto])
-      @users = User.where("name LIKE :name OR email LIKE :name",
-             {:name => "%#{params[:texto]}%", :name => params[:texto]})
+      if params[:texto] != ""
+          p = "%#{params[:texto]}%"
+          @users = User.where("name LIKE ? OR email LIKE ? ",p,p).paginate(page: params[:page],:per_page => 5)
+     else
+          p = "#{params[:texto]}"
+          @users = User.where("name LIKE ? OR email LIKE ? ",p,p).paginate(page: params[:page],:per_page => 5)
+      end
   end
 
 

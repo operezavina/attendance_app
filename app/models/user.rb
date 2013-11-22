@@ -9,6 +9,15 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
   has_secure_password
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |user|
+        csv << user.attributes.values_at(*column_names)
+      end
+    end
+  end
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
