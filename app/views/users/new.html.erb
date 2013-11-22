@@ -17,12 +17,12 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
 
-        <% if @user.admin? %>
+        <% #if @user.admin? %>
             <div class="field">
-              <%= f.label :admin %><br>
-              <%= f.check_box :admin %>
-            </div>
-        <% end %>
+              <%= f.label :admin %>
+              <%= f.check_box :admin %><br>
+            </div><br>
+        <%# end %>
 
         <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
