@@ -1,6 +1,6 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
-
+<%= link_to "Export as Excel", export_path %>
 <%= link_to "Download Excel", users_path(format: "xls"), :class=>"btn btn-primary"%>
 <%= will_paginate @users %>
 <table class="table table-striped">

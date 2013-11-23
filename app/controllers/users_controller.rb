@@ -22,7 +22,13 @@ class UsersController < ApplicationController
     end
 
   end
-
+  def export
+    headers['Content-Type'] = "application/vnd.ms-excel"
+    headers['Content-Disposition'] = 'attachment; filename="users.xls"'
+    headers['Pragma'] = 'no-cache'
+    headers['Expires'] = '0'
+    @users = User.find(:all)
+  end
   def show
     @user = User.find(params[:id])
     @events = Event.order("start_time ASC").where(user_id:@user.id)

@@ -10,6 +10,7 @@ AttendanceApp::Application.routes.draw do
 
   get "static_pages/home"
   root  'static_pages#home'
+  match '/export',  to: 'users#export',            via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/endday',  to: 'sessions#endday',         via: 'get'
