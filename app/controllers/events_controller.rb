@@ -3,14 +3,14 @@ class EventsController < ActionController::Base
   before_action :admin_user,     only: [:destroy]
   def index
     if !params[:user].nil?
-    @events = Event.where(user_id:params[:user][:user_id]).paginate(page: params[:page]).order(:start_time)
+    @events = Event.where(user_id:params[:user][:user_id]).paginate(page: params[:page],:per_page => 20).order(:start_time)
         respond_to do |format|
         format.html
         format.csv { render text: @events.to_csv }
         format.xls
         end
     else
-      @events = Event.order(:start_time).paginate(page: params[:page])
+      @events = Event.order(:start_time).paginate(page: params[:page],:per_page => 20)
       respond_to do |format|
         format.html
         format.csv { render text: @events.to_csv }
@@ -32,13 +32,13 @@ class EventsController < ActionController::Base
       @event = Event.order("created_at ASC").where(user_id:user.id).last
       if @event != nil
         if @event.start_time.strftime("%F") != DateTime.now.strftime("%F")
-          @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),end_time:DateTime.new(x.year, x.month, x.day, x.hour+2, x.min,x.sec),name:"Reunion mensual")
+          @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),end_time:DateTime.new(x.year, x.month, x.day, x.hour+2, x.min,x.sec),name:"Monthly Meeting")
           @event.save
           flash.now[:success] = 'Sign in success!'
         end
         redirect_to root_url
       else
-        @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),name:user.email)
+        @event = Event.new(user_id:user.id,start_time:DateTime.new(x.year, x.month, x.day, x.hour, x.min,x.sec),end_time:DateTime.new(x.year, x.month, x.day, x.hour+2, x.min,x.sec),name:"Monthly Meeting")
         @event.save
         flash.now[:success] = 'Sign in success!'
         redirect_to root_url

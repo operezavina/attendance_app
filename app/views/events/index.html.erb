@@ -1,18 +1,16 @@
 <% provide(:title, 'All Events') %>
 <h1>Events</h1>
-
 <%= form_tag("/events", method: "get") do %>
     <%= label_tag(:name, "Search for:") %>
     <%= collection_select(:user, :user_id, User.all, :id, :name, {include_blank: true} ) %>
     <%= submit_tag("Apply") %><%= link_to "  Show all  ", events_path %>
 <% end %>
-
 <p>
   Download:
-  <%= link_to "CSV", events_path(format: "csv") %> |
-  <%= link_to "Excel", events_path(format: "xls") %>
+  <%= link_to "CSV", events_path(format: "csv"), :class=>"btn btn-primary" %> |
+  <%= link_to "Excel", events_path(format: "xls"), :class=>"btn btn-primary"%>
 </p>
-
+<%= will_paginate @events %>
 <table class="table">
   <tr>
     <th>ID</th>
@@ -37,4 +35,5 @@
       </tr>
   <% end %>
 </table>
+<%= will_paginate @events %>
 <%= link_to "Return Admin", admin_path %>
