@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102003823) do
+ActiveRecord::Schema.define(version: 20131123145233) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 20131102003823) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "level"
+    t.string   "last"
+    t.string   "company"
+    t.string   "address"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "fax"
+    t.text     "description"
   end
+
+  add_index "users", ["company"], name: "index_users_on_company", using: :btree
+  add_index "users", ["last"], name: "index_users_on_last", using: :btree
+  add_index "users", ["phone"], name: "index_users_on_phone", using: :btree
 
 end

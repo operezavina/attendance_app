@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     headers['Pragma'] = 'no-cache'
     headers['Expires'] = '0'
     @users = User.find(:all)
+
   end
   def show
     @user = User.find(params[:id])
@@ -74,7 +75,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:level,:name,:last, :email,:company,:address,:zip,:phone,:fax,:description, :password,
                                  :password_confirmation,:admin)
   end
   # Before filters
